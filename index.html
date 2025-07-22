@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Выбор маршрута</title>
-    <script src="script.js"></script>
-    <style>
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        button {
-            font-size: 20px;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 10px;
-            background-color: #0088cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Выбор маршрута</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    function sendRoute(route) {
+      Telegram.WebApp.sendData(JSON.stringify({ route }));
+      document.getElementById("status").innerText = "✅ Спасибо, ждите...";
+    }
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      background-color: #0088cc;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #006699;
+    }
+    #status {
+      margin-top: 30px;
+      font-size: 20px;
+      color: green;
+    }
+  </style>
 </head>
 <body>
-    <h1>Выберите маршрут</h1>
-    <button onclick="sendRoute('Гирне → Алсанжак')">Гирне → Алсанжак</button>
-    <button onclick="sendRoute('Алсанжак → Гирне')">Алсанжак → Гирне</button>
+  <h2>Выберите маршрут:</h2>
+  <button onclick="sendRoute('Гирне → Алсанжак')">Гирне → Алсанжак</button><br>
+  <button onclick="sendRoute('Алсанжак → Гирне')">Алсанжак → Гирне</button>
+  <div id="status"></div>
 </body>
 </html>
